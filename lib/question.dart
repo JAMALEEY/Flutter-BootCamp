@@ -8,16 +8,18 @@ class Question extends StatelessWidget {
   // it will change only on init through the constructor
   final String quetionText;
 
-  Question(this.quetionText);
+  const Question(this.quetionText, {super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       // infinity is a width that ensures that the container takes as much width size as it can.
       width: double.infinity,
+      // Edge... allows us to create an object in different variants
+      margin: const EdgeInsets.all(50),
       child: Text(
         quetionText,
-        style: TextStyle(fontSize: 28),
+        style: const TextStyle(fontSize: 28),
         textAlign: TextAlign.center,
       ),
     );
