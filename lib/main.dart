@@ -21,7 +21,7 @@ class _MyAppState extends State<MyApp> {
     "What\'s your favorite animal ?",
   ];
 
-  void answerQuestion() {
+  void _answerQuestion() {
     setState(() {
       _questionIndex++;
       print(_questionIndex);
@@ -39,9 +39,9 @@ class _MyAppState extends State<MyApp> {
           body: Column(
             children: <Widget>[
               Question(questions.elementAt(_questionIndex)),
-              Answer(answerQuestion),
-              Answer(answerQuestion),
-              Answer(answerQuestion),
+              Answer(_answerQuestion),
+              Answer(_answerQuestion),
+              Answer(_answerQuestion),
             ],
           )),
     );
