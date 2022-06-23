@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './question.dart';
 
 void main() => {runApp(MyApp())};
 
@@ -7,10 +8,10 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 }
-
+// the _ private property befor the class name is used to allow access only for the main class (change from public to private)
 class _MyAppState extends State<MyApp> {
   // as good practice I declared the questionIndex property as var because it's intantiated with 0 then no need to declare as int
-  var questionIndex = 0;
+  var _questionIndex = 0;
 
   var questions = [
     "What\'s your favorite color ?",
@@ -20,8 +21,8 @@ class _MyAppState extends State<MyApp> {
 
   void answerQuestion() {
     setState(() {
-      questionIndex++;
-      print(questionIndex);
+      _questionIndex++;
+      print(_questionIndex);
     });
   }
 
@@ -35,7 +36,7 @@ class _MyAppState extends State<MyApp> {
           // we pass a children widget to the body its a generic type of Widget passed to the list to be specific
           body: Column(
             children: <Widget>[
-              Text(questions.elementAt(questionIndex)),
+              Question(questions.elementAt(_questionIndex)),
               ElevatedButton(
                 child: Text('Answer 1'),
                 onPressed: (() => {answerQuestion()}),
