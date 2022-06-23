@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 void main() => {runApp(MyApp())};
 
+// Both side connection (extends State<MyApp> + @overrid ) to allow the widget to be stateful !
 class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
@@ -14,7 +15,15 @@ class _MyAppState extends State<MyApp> {
   var questions = [
     "What\'s your favorite color ?",
     "What\'s your favorite food ?",
+    "What\'s your favorite animal ?",
   ];
+
+  void answerQuestion() {
+    setState(() {
+      questionIndex++;
+      print(questionIndex);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,19 +38,15 @@ class _MyAppState extends State<MyApp> {
               Text(questions.elementAt(questionIndex)),
               ElevatedButton(
                 child: Text('Answer 1'),
-                onPressed: (() => {
-                      questionIndex++,
-                      print('Answer 1 pressed'),
-                      print(questionIndex),
-                    }),
+                onPressed: (() => {answerQuestion()}),
               ),
               ElevatedButton(
                 child: Text('Answer 2'),
-                onPressed: (() => print('Answer 2 pressed')),
+                onPressed: (() => {answerQuestion()}),
               ),
               ElevatedButton(
                 child: Text('Answer 3'),
-                onPressed: (() => print('Answer 3 pressed')),
+                onPressed: (() => {answerQuestion()}),
               ),
             ],
           )),
