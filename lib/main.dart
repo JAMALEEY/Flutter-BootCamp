@@ -39,9 +39,9 @@ class _MyAppState extends State<MyApp> {
           body: Column(
             children: <Widget>[
               Question(questions.elementAt(_questionIndex)),
-              Answer(),
-              Answer(),
-              Answer(),
+              Answer(answerQuestion),
+              Answer(answerQuestion),
+              Answer(answerQuestion),
             ],
           )),
     );
