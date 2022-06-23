@@ -8,6 +8,7 @@ class MyApp extends StatefulWidget {
   @override
   State<MyApp> createState() => _MyAppState();
 }
+
 // the _ private property befor the class name is used to allow access only for the main class (change from public to private)
 class _MyAppState extends State<MyApp> {
   // as good practice I declared the questionIndex property as var because it's intantiated with 0 then no need to declare as int
