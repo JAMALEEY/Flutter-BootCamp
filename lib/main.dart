@@ -51,6 +51,12 @@ class _MyAppState extends State<MyApp> {
               Question(
                 questions[_questionIndex]['QuestionText'] as String,
               ),
+              // Telling dart that it will be a list for that we specify that : as List ...
+              // since we dont work with named properties we should respect the order of properties passed to Answer(_answerQuestion) first
+              // after that the answer ...
+              // for the spread operator ... since we will have the new map list inside an existing list ({List<Widget> children)
+              // we try to transform the values of the map list to be added into the existing list without adding the whole list in the previous list
+              // in summ => we took the mapped answed and we put it to children as a value to the latter.
               ...(questions[_questionIndex]['QuestionAnswers'] as List<String>).map((answer) => Answer(_answerQuestion, answer)).toList()
             ],
           )),

@@ -5,6 +5,7 @@ class Answer extends StatelessWidget {
   // final function:
   final VoidCallback selectHandler;
   final String QuestionAnswers;
+  // we allow the Answer widget to accept QuestionAnswers from main.Dart
   const Answer(this.selectHandler, this.QuestionAnswers, {super.key});
 
   @override
