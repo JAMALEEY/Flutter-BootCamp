@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import './question.dart';
 import './answer.dart';
+import './quizz.dart';
 
 void main() => {runApp(MyApp())};
 
@@ -12,7 +13,7 @@ class MyApp extends StatefulWidget {
 
 // the _ private property befor the class name is used to allow access only for the main class (change from public to private)
 class _MyAppState extends State<MyApp> {
-  final questions = const [
+  final _questions = const [
     {
       'QuestionText': 'What\'s your favorite color ?',
       'QuestionAnswers': ['Black', 'White', 'Grey', 'Red'],
@@ -36,7 +37,7 @@ class _MyAppState extends State<MyApp> {
       _questionIndex++;
       print(_questionIndex);
     });
-    if (_questionIndex < questions.length) {
+    if (_questionIndex < _questions.length) {
       print('more questions loading');
     }
   }
@@ -49,24 +50,13 @@ class _MyAppState extends State<MyApp> {
             title: const Text('Quizz'),
           ),
           // we pass a children widget to the body its a generic type of Widget passed to the list to be specific
-          body: _questionIndex < questions.length
-              ? Column(
-                  children: <Widget>[
-                    // Question(questions.elementAt(_questionIndex)),
-                    Question(
-                      questions[_questionIndex]['QuestionText'] as String,
-                    ),
-                    // Telling dart that it will be a list for that we specify that : as List ...
-                    // since we dont work with named properties we should respect the order of properties passed to Answer(_answerQuestion) first
-                    // after that the answer ...
-                    // for the spread operator ... since we will have the new map list inside an existing list ({List<Widget> children)
-                    // we try to transform the values of the map list to be added into the existing list without adding the whole list in the previous list
-                    // in summ => we took the mapped answed and we put it to children as a value to the latter.
-                    ...(questions[_questionIndex]['QuestionAnswers']
-                            as List<String>)
-                        .map((answer) => Answer(_answerQuestion, answer))
-                        .toList()
-                  ],
+          body: _questionIndex < _questions.length
+              ? Quizz(
+                // we assign valued to our arguments
+                  answerQuestion: _answerQuestion,
+                  questionIndex: _questionIndex,
+                  questions: _questions,
+                  key: null,
                 )
               : Center(
                   child: Text('BRAVO !'),
