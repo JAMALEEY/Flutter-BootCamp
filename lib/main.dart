@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import './question.dart';
 import './answer.dart';
 import './quizz.dart';
+import './result.dart';
 
 void main() => {runApp(MyApp())};
 
@@ -58,9 +59,8 @@ class _MyAppState extends State<MyApp> {
                   questions: _questions,
                   key: null,
                 )
-              : Center(
-                  child: Text('BRAVO !'),
-                )),
+              : Result()
+                ),
     );
   }
 }
