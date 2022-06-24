@@ -14,11 +14,20 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   // as good practice I declared the questionIndex property as var because it's intantiated with 0 then no need to declare as int
   var _questionIndex = 0;
-
+// I create a map collection so that I have key values which is helpfull !
   var questions = [
-    "What\'s your favorite color ?",
-    "What\'s your favorite food ?",
-    "What\'s your favorite animal ?",
+    {
+      'QuestionText': 'What\'s your favorite color ?',
+      'QuestionAnswers': ['Black', 'White', 'Grey', 'Red'],
+    },
+    {
+      'QuestionText': 'What\'s your favorite food ?',
+      'QuestionAnswers': ['Tacos', 'Burger', 'Couscous', 'Tajine'],
+    },
+    {
+      'QuestionText': 'What\'s your favorite country ?',
+      'QuestionAnswers': ['Morrocco', 'Morrocco', 'Morrocco', 'Morrocco'],
+    },
   ];
 
   void _answerQuestion() {
@@ -38,10 +47,11 @@ class _MyAppState extends State<MyApp> {
           // we pass a children widget to the body its a generic type of Widget passed to the list to be specific
           body: Column(
             children: <Widget>[
-              Question(questions.elementAt(_questionIndex)),
-              Answer(_answerQuestion),
-              Answer(_answerQuestion),
-              Answer(_answerQuestion),
+              // Question(questions.elementAt(_questionIndex)),
+              Question(
+                questions[_questionIndex]['QuestionText'] as String,
+              ),
+              ...(questions[_questionIndex]['QuestionAnswers'] as List<String>).map((answer) => Answer(_answerQuestion, answer)).toList()
             ],
           )),
     );
