@@ -4,7 +4,7 @@ import 'question.dart';
 
 class Quizz extends StatelessWidget {
   final List<Map<String, Object>> questions;
-  final VoidCallback answerQuestion;
+  final answerQuestion;
   final int questionIndex;
   const Quizz(
       {
@@ -28,9 +28,12 @@ class Quizz extends StatelessWidget {
         // for the spread operator ... since we will have the new map list inside an existing list ({List<Widget> children)
         // we try to transform the values of the map list to be added into the existing list without adding the whole list in the previous list
         // in summ => we took the mapped answed and we put it to children as a value to the latter.
-        ...(questions[questionIndex]['QuestionAnswers'] as List<String>)
-            .map((answer) => Answer(answerQuestion, answer))
-            .toList()
+        ...(questions[questionIndex]['QuestionAnswers']
+                as List<Map<String, Object>>)
+            .map((answer) {
+          return Answer(
+              () => answerQuestion(answer['Score']), answer['Text'] as String);
+        }).toList()
       ],
     );
   }
