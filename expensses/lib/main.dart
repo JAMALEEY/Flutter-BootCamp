@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import './transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -36,7 +38,7 @@ class MyHomePage extends StatelessWidget {
       ),
       body: Center(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Card(
@@ -45,6 +47,21 @@ class MyHomePage extends StatelessWidget {
                 //     minWidth: double.infinity, maxWidth: double.infinity),
                 color: Colors.blue,
                 child: Text('Chart! '),
+              ),
+              elevation: 5,
+            ),
+            Card(
+              child: Container(
+                padding: EdgeInsets.all(10),
+                margin: EdgeInsets.all(10),
+                child: Column(
+                  children: [
+                    TextField(
+                      autocorrect: true,
+                      autofocus: true,
+                    ),
+                  ],
+                ),
               ),
               elevation: 5,
             ),
