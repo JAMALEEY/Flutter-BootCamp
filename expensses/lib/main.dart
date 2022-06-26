@@ -1,6 +1,3 @@
-import 'dart:ui';
-
-import './transaction.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -17,18 +14,6 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  final List<Transaction> transactions = [
-    Transaction(
-        id: 't1',
-        title: 'New shoes',
-        amount: 69.99,
-        transactionDate: DateTime.now()),
-    Transaction(
-        id: 't2',
-        title: 'Tomates',
-        amount: 9.99,
-        transactionDate: DateTime.now())
-  ];
 
   // String? titleInput;
   // String? amountInput;
