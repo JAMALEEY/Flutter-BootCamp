@@ -30,6 +30,11 @@ class MyHomePage extends StatelessWidget {
         transactionDate: DateTime.now())
   ];
 
+  // String? titleInput;
+  // String? amountInput;
+  final titleController = TextEditingController();
+  final amountController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,31 +44,55 @@ class MyHomePage extends StatelessWidget {
       body: Center(
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.start,
-          crossAxisAlignment: CrossAxisAlignment.center,
+          // crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Card(
-              child: Container(
-                // constraints: BoxConstraints(
-                //     minWidth: double.infinity, maxWidth: double.infinity),
-                color: Colors.blue,
-                child: Text('Chart! '),
+            Container(
+              padding: EdgeInsets.all(20),
+              child: Column(
+                children: [
+                  Card(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Container(
+                            margin: EdgeInsets.all(20),
+                            child: TextField(
+                              decoration: InputDecoration(labelText: 'Title :'),
+                              // onChanged: (val) => titleInput = val,
+                              controller: titleController,
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.all(20),
+                            child: TextField(
+                              decoration:
+                                  InputDecoration(labelText: 'Amount :'),
+                              // onChanged: ((val) => amountInput = val),
+                              controller: amountController,
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.all(20),
+                            child: Column(
+                              children: [
+                                TextButton(
+                                  style: ButtonStyle(
+                                    foregroundColor:
+                                        MaterialStateProperty.all<Color>(
+                                            Color.fromARGB(255, 30, 129, 62)),
+                                  ),
+                                  child: Text('Add transaction.'),
+                                  onPressed: () {
+                                    print(titleController.text);
+                                  },
+                                ),
+                              ],
+                            ),
+                          )
+                        ]),
+                  )
+                ],
               ),
-              elevation: 5,
-            ),
-            Card(
-              child: Container(
-                padding: EdgeInsets.all(10),
-                margin: EdgeInsets.all(10),
-                child: Column(
-                  children: [
-                    TextField(
-                      autocorrect: true,
-                      autofocus: true,
-                    ),
-                  ],
-                ),
-              ),
-              elevation: 5,
             ),
             Column(
                 children: transactions
