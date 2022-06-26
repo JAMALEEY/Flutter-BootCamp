@@ -1,30 +1,63 @@
 import 'package:expensses/models/transaction.dart';
 import 'package:flutter/material.dart';
-import '../models/transaction.dart';
+import 'package:intl/intl.dart';
 
-class TransactionList extends StatefulWidget {
-  const TransactionList({super.key});
+class TransactionList extends StatelessWidget {
+  final List<Transaction> transactions;
 
-  @override
-  State<TransactionList> createState() => TtransactionListState();
-}
+  TransactionList(this.transactions);
 
-class TtransactionListState extends State<TransactionList> {
-  final List<Transaction> _userTransaction = [
-    Transaction(
-        id: 't1',
-        title: 'New shoes',
-        amount: 69.99,
-        transactionDate: DateTime.now()),
-    Transaction(
-        id: 't2',
-        title: 'Tomates',
-        amount: 9.99,
-        transactionDate: DateTime.now())
-  ];
-
-  @override
+  @override 
   Widget build(BuildContext context) {
-    return Container();
+    return Column(
+      children: transactions
+          .map(
+            (tx) => Card(
+              child: Row(
+                children: [
+                  Container(
+                    padding: EdgeInsets.all(10),
+                    margin: EdgeInsets.all(50),
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                      color: Colors.red,
+                      width: 1.5,
+                    )),
+                    child: Text(
+                      '${tx.amount}' + '\$',
+                      style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20,
+                          color: Colors.red),
+                    ),
+                  ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        tx.title.toString(),
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 22,
+                          color: Colors.purple,
+                        ),
+                      ),
+                      Text(
+                        DateFormat.yMMMd()
+                            .format(tx.transactionDate as DateTime),
+                        style: TextStyle(
+                          fontSize: 20,
+                          color: Color.fromARGB(255, 141, 141, 141),
+                        ),
+                      ),
+                    ],
+                  )
+                ],
+              ),
+              elevation: 5,
+            ),
+          )
+          .toList(),
+    );
   }
 }
