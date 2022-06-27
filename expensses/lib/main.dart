@@ -10,7 +10,42 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      // task manager and background name
       title: 'Expansses tracker App',
+      theme: ThemeData(
+        fontFamily: 'OpenSans',
+
+        textTheme: ThemeData.light().textTheme.copyWith(
+              headline6: TextStyle(
+                fontFamily: 'QuickSand',
+                fontWeight: FontWeight.bold,
+                fontSize: 19,
+              ),
+            ),
+
+        // centralizing font for the appBars:
+        // overriding all appBars' titles (headline6's) with the following style
+        appBarTheme: AppBarTheme(
+          toolbarTextStyle: ThemeData.light()
+              .textTheme
+              .copyWith(
+                  headline6: TextStyle(
+                fontFamily: 'Quicksand',
+                fontSize: 200,
+              ))
+              .bodyText2,
+          titleTextStyle: ThemeData.light()
+              .textTheme
+              .copyWith(
+                  headline6: TextStyle(
+                fontFamily: 'Quicksand',
+                fontSize: 20,
+              ))
+              .headline6,
+        ),
+        colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple)
+            .copyWith(secondary: Colors.amber),
+      ),
       home: MyHomePage(),
     );
   }
@@ -63,7 +98,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter App'),
+        title: Text('My Expenses App'),
         actions: [
           IconButton(
               icon: Icon(Icons.add),
