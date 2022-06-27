@@ -11,55 +11,51 @@ class TransactionList extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 300,
-      child: ListView(
-        children: transactions
-            .map(
-              (tx) => Card(
-                child: Row(
-                  children: [
-                    Container(
-                      padding: EdgeInsets.all(10),
-                      margin: EdgeInsets.all(50),
-                      decoration: BoxDecoration(
-                          border: Border.all(
-                        color: Colors.red,
-                        width: 1.5,
-                      )),
-                      child: Text(
-                        '${tx.amount}' + '\$',
-                        style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Colors.red),
-                      ),
-                    ),
-                    Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          tx.title.toString(),
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 22,
-                            color: Colors.purple,
-                          ),
-                        ),
-                        Text(
-                          DateFormat.yMMMd()
-                              .format(tx.transactionDate as DateTime),
-                          style: TextStyle(
-                            fontSize: 20,
-                            color: Color.fromARGB(255, 141, 141, 141),
-                          ),
-                        ),
-                      ],
-                    )
-                  ],
+      child: ListView.builder(
+        itemBuilder: (context, index) => Card(
+          child: Row(
+            children: [
+              Container(
+                padding: EdgeInsets.all(10),
+                margin: EdgeInsets.all(50),
+                decoration: BoxDecoration(
+                    border: Border.all(
+                  color: Colors.red,
+                  width: 1.5,
+                )),
+                child: Text(
+                  '${transactions[index].amount}' + '\$',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 20,
+                      color: Colors.red),
                 ),
-                elevation: 5,
               ),
-            )
-            .toList(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    transactions[index].title.toString(),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 22,
+                      color: Colors.purple,
+                    ),
+                  ),
+                  Text(
+                    DateFormat.yMMMd().format(
+                        transactions[index].transactionDate as DateTime),
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Color.fromARGB(255, 141, 141, 141),
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
+          elevation: 5,
+        ),
       ),
     );
   }
