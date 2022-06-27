@@ -1,24 +1,22 @@
+import './widgets/new_transaction.dart';
+
 import './widgets/user_transaction.dart';
 import 'package:flutter/material.dart';
-
-void main() => runApp(MyApp());
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter App',
-      home: MyHomePage(),
-    );
-  }
-}
 
 class MyHomePage extends StatelessWidget {
   // String? titleInput;
   // String? amountInput;
   // final titleController = TextEditingController();
   // final amountController = TextEditingController();
+
+  void startAddNewTransaction(BuildContext bldCtx) {
+    showModalBottomSheet(
+      context: bldCtx,
+      builder: (_) => NewTransaction(
+
+      ),
+    )
+  }
 
   @override
   Widget build(BuildContext context) {
