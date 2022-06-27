@@ -1,3 +1,4 @@
+import './widgets/user_transaction.dart';
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -35,6 +36,7 @@ class MyHomePage extends StatelessWidget {
                 children: [],
               ),
             ),
+            UserTransaction()
           ],
         ),
       ),

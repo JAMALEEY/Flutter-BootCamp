@@ -7,7 +7,7 @@ class TransactionList extends StatelessWidget {
 
   TransactionList(this.transactions);
 
-  @override 
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: transactions
