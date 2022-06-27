@@ -9,7 +9,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter App',
+      debugShowCheckedModeBanner: false,
+      title: 'Expansses tracker App',
       home: MyHomePage(),
     );
   }
@@ -49,7 +50,11 @@ class _MyHomePageState extends State<MyHomePage> {
     showModalBottomSheet(
       context: bldCtx,
       builder: (_) {
-        return NewTransaction(_addNewTransaction);
+        return GestureDetector(
+          onTap: () => null,
+          behavior: HitTestBehavior.opaque,
+          child: NewTransaction(_addNewTransaction),
+        );
       },
     );
   }
