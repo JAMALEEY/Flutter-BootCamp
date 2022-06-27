@@ -26,6 +26,7 @@ class NewTransaction extends StatelessWidget {
             decoration: InputDecoration(labelText: 'Title :'),
             // onChanged: (val) => titleInput = val,
             controller: titleController,
+            onSubmitted: (_) => submitData(),
           ),
         ),
         Container(
