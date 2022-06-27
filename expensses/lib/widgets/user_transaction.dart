@@ -4,13 +4,16 @@ import './transaction_list.dart';
 import '../models/transaction.dart';
 
 class UserTransaction extends StatefulWidget {
-  const UserTransaction({super.key});
+ 
 
   @override
   State<UserTransaction> createState() => _UserTransactionState();
+
+
 }
 
 class _UserTransactionState extends State<UserTransaction> {
+  
   final List<Transaction> _userTransaction = [
     Transaction(
         id: 't1',

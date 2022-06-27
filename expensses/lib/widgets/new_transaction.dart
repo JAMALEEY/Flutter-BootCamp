@@ -4,6 +4,15 @@ class NewTransaction extends StatelessWidget {
   final Function addTx;
   final titleController = TextEditingController();
   final amountController = TextEditingController();
+  submitData() {
+    final enteredTitle = titleController.text;
+    final enteredAmount = double.parse(amountController.text);
+
+    if (enteredTitle.isEmpty || enteredAmount <= 0) {
+      return;
+    }
+    addTx(enteredTitle, enteredAmount);
+  }
 
   NewTransaction(this.addTx);
 
@@ -23,8 +32,13 @@ class NewTransaction extends StatelessWidget {
           margin: EdgeInsets.all(20),
           child: TextField(
             decoration: InputDecoration(labelText: 'Amount :'),
-            // onChanged: ((val) => amountInput = val),
+            // onChanged: ((val) => amountInput = val),  alternative is controller argument
             controller: amountController,
+            // specify what to get from the user in the textField amount
+            keyboardType: TextInputType.number,
+            //  the keyword (_) mean that we got argument but we dont work with it !
+            // onSubmitted to handle adding on enter
+            onSubmitted: (_) => submitData(),
           ),
         ),
         Container(
@@ -37,9 +51,7 @@ class NewTransaction extends StatelessWidget {
                       Color.fromARGB(255, 30, 129, 62)),
                 ),
                 child: Text('Add transaction.'),
-                onPressed: () {
-                  addTx(titleController.text, double.parse(amountController.text));
-                },
+                onPressed: submitData,
               ),
             ],
           ),
